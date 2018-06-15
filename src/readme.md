@@ -18,3 +18,6 @@ El segundo proyecto solicitado es un Data Dashboard, donde las TM podrán revisa
 ### Planteando la interfaz
 Al ser el primer objetivo conocer el avance de las alumnas, se planteó como primera interfaz una lista de avance general de todas las alumnas:
 ![interfaz](https://github.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/Draft%20-%20Dashboard%20Laboratoria.png "Interfaz")
+
+Cuando se quiera conocer el avance de cada una, se dará en el botón 'Ver más' que lo llevará a la siguiente pantalla:
+![interfaz2](https://github.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/Draft%20-%20Dashboard%20Laboratoria-1.png "Interfaz2")
