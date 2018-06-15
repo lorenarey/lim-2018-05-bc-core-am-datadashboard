@@ -4,8 +4,38 @@
     <meta charset="utf-8">
     <title>Data Dashboard</title>
     <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+    <meta name="viewport" content="width=device-width,  initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+<header class= 'logo-container'>
+<img class='img' src="..\img\Laboratoria_RGB_logo-03.png">
+</header>
+<body>
+   <h1 id='promName'>PROM LIMA 2018</h1>
+    <div class='container'>
+        <ul class='nav'>
+            <li><a href=''>Inicio</a></li>
+            <li><a href=''>Sedes</a>
+                <ul>
+                    <li><a href=''>Lima</a></li>
+                    <li><a href=''>Santiago de Chile</a></li>
+                    <li><a href=''>Ciudad de México</a></li>
+                    <li><a href=''>Sao Paulo</a></li>
+                </ul>
+            </li>
+        </ul>
+        <form id='search-form'>
+        <label for='search-keyword' class='vissualhidden'>Ingresa el nombre de la alumna</label>
+          <!--<input id='search-keyword' type='text' name='search-keyword' placeholder="e.g. Danelly Sotomayor" required>-->
+            <input class='buttonAlumnas' id='submit-btn' type='button' value='Presiona aquí'>
+        </form>
+    </div>
+    <div class='container'>
+        <ul id='response-container'></ul>
+    </div>
+
+    <footer>
+        LABORATORIA
+    </footer>
     <script src="data.js"></script>
     <script src="main.js"></script>
   </body>
