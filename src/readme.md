@@ -16,4 +16,4 @@ Realizamos una primera entrevista a la TM de Lima, Alejandra Ramirez, para conoc
 
 ### Planteando la interfaz
 Al ser el primer objetivo conocer el avance de las alumnas, se planteó como primera interfaz una lista de avance general de todas las alumnas:
-![interfaz]( "Interfaz")
+![interfaz](https://raw.githubusercontent.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/Draft%20-%20Dashboard%20Laboratoria.png "Interfaz")
