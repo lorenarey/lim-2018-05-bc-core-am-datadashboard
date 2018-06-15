@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Data Dashboard</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <script src="main.js"></script>
-  </body>
+ <head>
+   <meta charset="utf-8">
+   <title>Data Dashboard</title>
+   <link rel="stylesheet" href="style.css" />
+   <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+</header class= 'logo'>
+<img class='img' src="..\img\Laboratoria_RGB_logo-03.png">
+</header>
+<body>
+  <!--busqueda> <h1>Búsqueda de alumnas</h1> <!-->
+   <div class='container'>
+       <form id='search-form'>
+           <label for='search-keyword' class='vissualhidden'>Ingresa el nombre de la alumna</label>
+         <!--<input id='search-keyword' type='text' name='search-keyword' placeholder="e.g. Danelly Sotomayor" required>-->
+           <input id='submit-btn' type='button' value='Submit'>
+       </form>
+   </div>
+
+   <div class='container'>
+       <ul id='response-container'></ul>
+   </div>
+
+   <script src="data.js"></script>
+   <script src="main.js"></script>
+ </body>
 </html>
