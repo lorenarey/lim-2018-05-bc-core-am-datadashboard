@@ -12,8 +12,9 @@ Así, el reto de este proyecto es crear una interfaz donde las TMs puedan ver y 
 El segundo proyecto solicitado es un Data Dashboard, donde las TM podrán revisar de manera más sencilla y gráfica el avance que las alumnas de laboratoria realizan en el LMS.
 
 ### Conociendo al usuario
-Realizamos una primera entrevista a la TM de Lima, Alejandra Ramirez, para conocer las preferencias y usos que hace del LMS, así como solicitar feedback del primer draft elaborado.
+- Se realizó la primera entrevista global a la TM de Lima, Alejandra Ramirez, donde nos indicó las primeras impresiones y usos que le daría al Data Dashboard.
+- Realizamos una segunda entrevista a la TM para conocer las preferencias y usos que hace del LMS, así como solicitar feedback del primer draft elaborado, por lo que se planteó la siguiente interfaz.
 
 ### Planteando la interfaz
 Al ser el primer objetivo conocer el avance de las alumnas, se planteó como primera interfaz una lista de avance general de todas las alumnas:
-![interfaz](https://raw.githubusercontent.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/Draft%20-%20Dashboard%20Laboratoria.png "Interfaz")
+![interfaz](https://github.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/Draft%20-%20Dashboard%20Laboratoria.png "Interfaz")
