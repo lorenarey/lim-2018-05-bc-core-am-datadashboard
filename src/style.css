@@ -1,5 +1,7 @@
 body {
     font-family: 'Bitter', serif;
+    margin: 0;
+    padding: 0;
 }
 
 .logo-container {
@@ -19,7 +21,7 @@ img {
 }
 
 ul, li {
-    list-style: none;
+    display: block;
 }
 
 .nav li a {
@@ -27,16 +29,11 @@ ul, li {
     color: #ffffff;
     text-decoration: none;
     padding: 10px 15px;
-    display: block;
+    display: inline-block;
 }
 
 .nav li a:hover {
     background:#434343;
-}
-
-
-.nav > li { 
-    float: left;
 }
 
 .nav li ul {
@@ -48,9 +45,15 @@ ul, li {
     display:block;
 }
 
+.nav li ul li ul {
+    position: relative;
+    float: left;
+    display: none;
+}
+
 input {
     text-decoration: none;
-    border: 0px;
+    border: 10px;
     background: #000000;
     color: #ffffff;
 }
@@ -67,4 +70,5 @@ input {
 footer {
     background:#000000;
     padding: 20px;
+    color: #ffffff;
 }

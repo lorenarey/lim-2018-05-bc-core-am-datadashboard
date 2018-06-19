@@ -2,6 +2,7 @@ const names = document.getElementById('submit-btn')
 const responseContainer = document.getElementById('response-container')
 //declaramos el objeto global vacío que se llenará cuando se obtenga la data//
 window.cohortData = {}
+console.log (cohortData);
 
 const getUser = () => {
    let requestUsers = new XMLHttpRequest();
@@ -12,12 +13,13 @@ const getUser = () => {
 };
 
 const saveUsers = (event) => {
-    cohortData.user = JSON.parse(event.target.responseText);
+    cohortData.users = JSON.parse(event.target.responseText);
     getProgress(); 
 }
 
 
-const getProgress = () => {
+
+/*const getProgress = () => {
     let requestProgress = new XMLHttpRequest();
     requestProgress.open('GET', '../data/cohorts/lim-2018-03-pre-core-pw/progress.json');
     requestProgress.onload = saveProgress;
@@ -40,17 +42,23 @@ const getProgress = () => {
  
  const saveCohorts = (event) => {
      cohortData.cohorts = JSON.parse(event.target.responseText);
-     /*printCohorts();*/ 
- }
- 
+     printCohorts();
+ }*/
 
- /*const printCohorts = () => {
-    const showCohorts = userData.map(function(user) {
-        console.log(user.name);
-        console.log(user.id); 
-        //corregir 
+    const printUsers = () => {
+    const showUsers = getUser.map(function(user) {
+        console.log(cohortData);
+    })
+
+    let li = document.createElement('li');
+    li.className = 'articleClass';
+    li.innerHTML = `<a href='#'>${users.name}</a>`;
+    responseContainer.appendChild(li);
+
+        /*console.log(user.id); 
+
      });
-     
+       - ${progressData[user.id].intro.completedDuration} 
  };
 
 /*const showUser = () => {
@@ -79,3 +87,4 @@ names.addEventListener('click', (e) => {
    e.preventDefault();
    getUser(); 
 });
+    }
