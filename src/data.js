@@ -1,5 +1,7 @@
 const names = document.getElementById('submit-btn')
 const responseContainer = document.getElementById('response-container')
+//declaramos el objeto global vacío que se llenará cuando se obtenga la data//
+window.cohortData = {}
 
 const getUser = () => {
    let requestUsers = new XMLHttpRequest();
@@ -10,7 +12,7 @@ const getUser = () => {
 };
 
 const saveUsers = (event) => {
-    window.userData = JSON.parse(event.target.responseText);
+    cohortData.user = JSON.parse(event.target.responseText);
     getProgress(); 
 }
 
@@ -24,15 +26,29 @@ const getProgress = () => {
  };
 
  const saveProgress = (event) => {
-    window.progressData = JSON.parse(event.target.responseText);
-    printData();
+    cohortData.progress = JSON.parse(event.target.responseText);
+    getCohorts();
  }  
 
- const printData = () => {
-    const showData = userData.map(function(user) {
+ const getCohorts= () => {
+    let requestCohorts = new XMLHttpRequest();
+    requestCohorts.open('GET', '../data/cohorts.json');
+    requestCohorts.onload = saveCohorts;
+    requestCohorts.onerror = handleError;
+    requestCohorts.send();
+ };
+ 
+ const saveCohorts = (event) => {
+     cohortData.cohorts = JSON.parse(event.target.responseText);
+     /*printCohorts();*/ 
+ }
+ 
+
+ /*const printCohorts = () => {
+    const showCohorts = userData.map(function(user) {
         console.log(user.name);
         console.log(user.id); 
-        //falta imprimir el progreso del usuarioooooo
+        //corregir 
      });
      
  };
