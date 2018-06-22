@@ -20,18 +20,18 @@ Para realizar la planificación del proyecto, se utilizó un tablero Backlog. En
 - Realizamos una segunda entrevista a la TM para conocer las preferencias y usos que hace del LMS, así como solicitar feedback del primer draft elaborado, por lo que se planteó la siguiente interfaz.
 
 ### Planteando la interfaz
-##Prototipo de baja fidelidad
+####Prototipo de baja fidelidad
 Dentro del proceso de elaboración de nuestro proyecto, se realizó el prototipado de baja fidelidad a mano alzada, según se ve a continuación:
 ![main](https://github.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/principal.jpeg "vista principal")
 Esta es la vista principal de la interfaz una vez elegido el Cohort Lima.
 
-![main2](https://github.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/filtros.jpeg "vista de filtros")
+![main2](https://github.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/filtros.jpeg "vista de filtros")  
 Esta es la vista de los filtros a implementarse.
 
 Al ser el primer objetivo conocer el avance de las alumnas, se planteó como primera interfaz una lista de avance general de todas las alumnas:
 ![interfaz](https://github.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/Draft%20-%20Dashboard%20Laboratoria.png "Interfaz")
 
-##Prototipo de alta fidelidad
+####Prototipo de alta fidelidad
 Se utilizó la herramienta Figma para realizar el prototipo de alta fidelidad. Al ser el primer objetivo conocer el avance de las alumnas, se planteó como primera interfaz una lista de avance general de todas las alumnas:
 ![interfaz](https://github.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/Draft%20-%20Dashboard%20Laboratoria.png "Interfaz")
 
