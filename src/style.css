@@ -59,8 +59,6 @@ a {
 }
 
 .container {
-    width: 15%;
-    display: inline-block;
     font-family: 'Bitter', serif;
 }
 
@@ -95,6 +93,19 @@ a {
 .container .nav .btn1 > a {
     background: #49458a;
 }
+
+.sidebar {
+  float: left;
+  width: 20%;
+}
+
+.main {
+  float: left;
+  padding: 30px;
+  width: 80%;
+  box-sizing: border-box;
+}
+
 
 @media screen and (max-width: 450px) {
     body {
