@@ -1,6 +1,6 @@
-const UsersUrl = '../data/cohorts/lim-2018-03-pre-core-pw/users.json'
-const ProgressUrl = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json'
-const CohortsUrl = '../data/cohorts.json'
+const usersUrl = '../data/cohorts/lim-2018-03-pre-core-pw/users.json'
+const progressUrl = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json'
+const cohortsUrl = '../data/cohorts.json'
 
 //declaramos el objeto global cohort data vacío que se llenará cuando se obtenga la data
 // las variables se puede cargar de cualquier archivo por que esta dentro del ob windows //
@@ -24,15 +24,15 @@ const handleError = () => {
 }
 
 //Creamos una funcion donde pasamos de parametro las url y el onload
-const getData = (url, onload, stringData) => {
+const getData = (url, callback, stringData) => {
 
   let requestData = new XMLHttpRequest();
   requestData.open('GET', url);
-  requestData.onload = onload;
+  requestData.onload = callback;
   requestData.onerror = handleError;
   requestData.send();
 };
 
-getData(UsersUrl, saveUsers, 'users');
-getData(ProgressUrl, saveProgress, 'progress');
-getData(CohortsUrl, saveCohorts, 'cohorts');
+getData(usersUrl, saveUsers, 'users');
+getData(progressUrl, saveProgress, 'progress');
+getData(cohortsUrl, saveCohorts, 'cohorts');

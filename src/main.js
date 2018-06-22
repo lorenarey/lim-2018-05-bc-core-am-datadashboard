@@ -1,4 +1,4 @@
-const names = document.getElementById('submit-btn')
+const names = document.getElementById('cohort-lima')
 const responseContainer = document.getElementById('response-container')
 
 names.addEventListener('click', (e) => {

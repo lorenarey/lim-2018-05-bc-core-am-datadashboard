@@ -8,6 +8,7 @@ window.computeUsersStats = () => {
       const liElem = document.createElement('li')
       liElem.innerHTML = userResult.name + '<b> ejercicios completados: ' + userResult.stats.exercises + '</b>';
       responseContainerElem.appendChild(liElem)
+      return userResult;
     }
 
   });
