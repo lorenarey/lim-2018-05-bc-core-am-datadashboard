@@ -11,13 +11,29 @@ Así, el reto de este proyecto es crear una interfaz donde las TMs puedan ver y 
 ### Introducción
 El segundo proyecto solicitado es un Data Dashboard, donde las TM podrán revisar de manera más sencilla y gráfica el avance que las alumnas de laboratoria realizan en el LMS.
 
+### Proceso de planificación
+Para realizar la planificación del proyecto, se utilizó un tablero Backlog. En este segundo sprint, el objetivo principal es realizar la impresión en HTML de los nombres y porcentaje de los ejercicios completados.
+![backlog](https://github.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/backlog-2do-sprint.jpeg "backlog-2do-sprint")
+
 ### Conociendo al usuario
 - Se realizó la primera entrevista global a la TM de Lima, Alejandra Ramirez, donde nos indicó las primeras impresiones y usos que le daría al Data Dashboard.
 - Realizamos una segunda entrevista a la TM para conocer las preferencias y usos que hace del LMS, así como solicitar feedback del primer draft elaborado, por lo que se planteó la siguiente interfaz.
 
 ### Planteando la interfaz
+##Prototipo de baja fidelidad
+Dentro del proceso de elaboración de nuestro proyecto, se realizó el prototipado de baja fidelidad a mano alzada, según se ve a continuación:
+![main](https://github.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/principal.jpeg "vista principal")
+Esta es la vista principal de la interfaz una vez elegido el Cohort Lima.
+
+![main2](https://github.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/filtros.jpeg "vista de filtros")
+Esta es la vista de los filtros a implementarse.
+
 Al ser el primer objetivo conocer el avance de las alumnas, se planteó como primera interfaz una lista de avance general de todas las alumnas:
 ![interfaz](https://github.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/Draft%20-%20Dashboard%20Laboratoria.png "Interfaz")
 
-Cuando se quiera conocer el avance de cada una, se dará en el botón 'Ver más' que lo llevará a la siguiente pantalla:
+##Prototipo de alta fidelidad
+Se utilizó la herramienta Figma para realizar el prototipo de alta fidelidad. Al ser el primer objetivo conocer el avance de las alumnas, se planteó como primera interfaz una lista de avance general de todas las alumnas:
+![interfaz](https://github.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/Draft%20-%20Dashboard%20Laboratoria.png "Interfaz")
+
+Asimismo, se implementará una vista donde se obtendrá el progreso por alumna.
 ![interfaz2](https://github.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/Draft%20-%20Dashboard%20Laboratoria-1.png "Interfaz2")
