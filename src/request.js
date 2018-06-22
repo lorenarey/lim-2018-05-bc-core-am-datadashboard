@@ -7,33 +7,32 @@ const CohortsUrl = '../data/cohorts.json'
 window.cohortData = {}
 
 const saveUsers = (event) => {
-    //guardndo la data user en cohortData.users
-    cohortData.users = JSON.parse(event.target.responseText);
+  //guardndo la data user en cohortData.users
+  cohortData.users = JSON.parse(event.target.responseText);
 }
 
 const saveProgress = (event) => {
-    cohortData.progress = JSON.parse(event.target.responseText);
-} 
-
- const saveCohorts = (event) => {
-    cohortData.cohorts = JSON.parse(event.target.responseText);   
+  cohortData.progress = JSON.parse(event.target.responseText);
 }
 
-const handleError= () => {
+const saveCohorts = (event) => {
+  cohortData.cohorts = JSON.parse(event.target.responseText);
+}
+
+const handleError = () => {
   console.log('hay un error')
 }
 
 //Creamos una funcion donde pasamos de parametro las url y el onload
 const getData = (url, onload, stringData) => {
 
-    let requestData = new XMLHttpRequest();
-    requestData.open('GET', url);
-    requestData.onload = onload;
-    requestData.onerror = handleError;
-    requestData.send();
- };
+  let requestData = new XMLHttpRequest();
+  requestData.open('GET', url);
+  requestData.onload = onload;
+  requestData.onerror = handleError;
+  requestData.send();
+};
 
- getData(UsersUrl, saveUsers, 'users'); 
- getData(ProgressUrl, saveProgress, 'progress');
- getData(CohortsUrl, saveCohorts, 'cohorts');
- 
+getData(UsersUrl, saveUsers, 'users');
+getData(ProgressUrl, saveProgress, 'progress');
+getData(CohortsUrl, saveCohorts, 'cohorts');
