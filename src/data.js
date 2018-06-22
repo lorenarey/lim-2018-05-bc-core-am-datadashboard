@@ -6,13 +6,13 @@ window.computeUsersStats = () => {
       const completedExercises = (cohortData.progress[obj.id]['intro']['units']['02-variables-and-data-types']['parts']['06-exercises']['completed']) * 100;
       const userResult = { name: obj.name, stats: {exercises: completedExercises} }
       const liElem = document.createElement('li')
-      liElem.innerHTML = userResult.name + '<b> ejercicios completados: ' + userResult.stats.exercises + '</b>';
+      liElem.innerHTML = userResult.name + '<b> ejercicios completados: ' + userResult.stats.exercises + '%</b>';
       responseContainerElem.appendChild(liElem)
       return userResult;
     }
 
   });
-  console.log(userWithStats);
+  console.log(computeUsersStats);
 
  /*return userWithStats;*/
 }
