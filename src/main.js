@@ -1,5 +1,5 @@
-const names = document.getElementById('cohort-lima')
-const responseContainer = document.getElementById('response-container')
+const cohortSelect = document.getElementById('orderSelect')
+const responseContainer = document.getElementById('container-user')
 const usersUrl = '../data/cohorts/lim-2018-03-pre-core-pw/users.json'
 const progressUrl = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json'
 const cohortsUrl = '../data/cohorts.json'
@@ -31,8 +31,13 @@ const saveCohorts = (event) => {
 
   courses = Object.keys(currentCohort.coursesIndex)
 
-computeUsersStats(users, progress, courses)
-
+  const usersWithStats = computeUsersStats(users, progress, courses)
+  console.log(usersWithStats)
+  /*usersWithStats.forEach((user) => {
+    const row = document.createElement('tr')
+    row.innerHTML = `<td>${user.name}</td>`;
+    responseContainerElem.appendChild('container-user')
+  })*/
 }
 
 const handleError = () => {
@@ -49,12 +54,10 @@ const getData = (url, callback, stringData) => {
   requestData.send();
 };
 
-getData(usersUrl, saveUsers, 'users');
+cohortSelect.addEventListener('change', (e) => {
+  const value = cohortSelect.options[cohortSelect.selectedIndex].value;
+  getData(usersUrl, saveUsers, 'users');
+})
 
-names.addEventListener('click', (e) => {
-  e.preventDefault();
-
-
-});
 
 

@@ -1,7 +1,7 @@
 window.computeUsersStats = (users, progress, courses) => {
-  /*const responseContainerElem = document.getElementById('response-container')*/
   const getResult = users.map(function (user) {
     courses.forEach(courseName => {
+      console.log('courseName', courseName)
       if(progress[user.id].hasOwnProperty(courseName)){
         const percent = progress[user.id].intro.percent;
         const userUnits = progress[user.id].intro.units;
@@ -67,32 +67,35 @@ window.computeUsersStats = (users, progress, courses) => {
         //--------------------------------------------------------//
         
 
-        /*const userWithStats = {
+        const usersWithStats = {
           name: user.name,
           stats: {
-            percent:
+            percent: percent,
             exercises: {
-              total:
-              completed:
-              percent:
-            }
+              total: totalExcercises,
+              completed: completedExercises,
+              percent: percentExercises,
+            },
             reads: {
-              total:
-              completed:
-              percent:
-            }
+              total: totalReads,
+              completed: completedReads,
+              percent: percentReads,
+            },
             quizzes: {
-              total:
-              completed:
-              percent:
-              scoreSum:
-              scoreAvg:
+              total: totalQuizzes,
+              completed: completedQuizzes,
+              percent: percentQuizzes,
+              scoreSum: scoreSum,
+              scoreAvg: scoreAvg,
             }
           }
-        }*/
+        }
+        
+        console.log(usersWithStats)
+
+        return usersWithStats;
       } 
-      return null;
     })
   });
- /*return userWithStats;*/
+ return getResult;
 }

@@ -6,9 +6,6 @@
 
 html, body {
     width: 100%;
-}
-
-body {
     font-family: 'Bitter', serif;
 }
 
@@ -26,29 +23,46 @@ form {
     float: right;
 }
 
-input { 
-    border-radius: 10px;
-    padding: 5px 10px;
-    background: #eee6e6d2;
-}
+input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 14px;
+    border: none;
+  }
 
-#search-btn {
-    width: 30px;
-    height: 30px;
-    margin: 2px;
-    background: url(../img/Lupa.png) no-repeat center #ffffff;
-}
 
-#prom-name {
+
+.filter-container {
     background: #ffe521;
     padding: 10px 30px;
     width: 100%;
     float: right;
 }
 
+.filter-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #979588;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+
+.filter-container button:hover {
+    background: #e0dfd2;
+  }
+
+.selectorStats {
+  float:right;
+  width: 50%;
+}
+
 a {
     text-decoration: none;
     color: #ffffff;
+    font-family: 'Bitter', serif;
 }
 
 .btn-menu {
@@ -58,60 +72,60 @@ a {
     color: #ffffff;
 }
 
-.container {
-    font-family: 'Bitter', serif;
-}
-
-.container .nav {
+.sidebar .nav {
     width: 100%;
 }
 
-.container ul {
+.sidebar ul {
     list-style: none;
 }
 
-.container .nav li a {
+.sidebar .nav li a {
     color: #ffffff;
     display: block;
     padding: 15px 20px;
-    background: #0d2c50;
+    background: #495258;
 }
 
-.container .nav li a:hover {
-    background: #60758c;
+.sidebar .nav li a:hover {
+    background: #b623a2;
 }
 
-
-.container ul:target {
-    display:block;
+.sidebar .nav ul li a {
+    background: #6e7379
 }
 
-.container .nav ul li a {
-    background: #60758c
+.sidebar .nav .btn1 > a {
+    background: #000000;
 }
 
-.container .nav .btn1 > a {
-    background: #49458a;
+.sidebar .nav .btn2 {
+    background: #272626;
 }
 
 .sidebar {
+  position: relative;
   float: left;
   width: 20%;
 }
 
-.main {
-  float: left;
+.table-container {
+  position:relative;
+  display: inline-block;
   padding: 30px;
   width: 80%;
-  box-sizing: border-box;
 }
 
+.table {
+  padding: 30px;
+  width: 100%;
+}
 
 @media screen and (max-width: 450px) {
     body {
         padding-top: 80px;
     }
-    .container {
+    .sidebar {
         margin: 0;
         width: 100%;
         position: fixed;
@@ -120,9 +134,28 @@ a {
 
     .btn-menu {
         display: block;
+        text-align: center;
+        width: 100%;
     }
 
-    .container.nav {
+    .nav {
         display: none;
     }
 }
+
+/*footer {
+background:#000000;
+padding: 20px;
+    color: #ffffff
+  position: absolute;
+  bottom:0;
+  width: 100%;
+}
+
+
+footer {
+    background:#000000;
+    padding: 20px;
+    color: #ffffff;
+}
+*/
