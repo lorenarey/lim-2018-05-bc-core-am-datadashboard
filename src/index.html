@@ -7,48 +7,49 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+  </head>
 <body>
-  <header class='logo-container'>
-    <img class='img' src="..\img\Laboratoria_RGB_logo-03.png" width="40%">
+  <header class="logo-container">
+    <img class="img" src="..\img\Laboratoria_RGB_logo-03.png" width="40%">
   </header>
   <section class="content">
-    <div class='filter-container'>
+    <div class="filter-container">
       <form>
         <input type="text" placeholder="Filtrado de alumnas...">
         <button type="submit"><i class="fa fa-search"></i></button>
       </form>
     </div>
 
-    <!--<div class="selectorStats">
-        <select id="orderSelect" class="form-control">
+    <div class="selectorStats">
+        <button type="button" class="btn btn-success">Ordenar</button>
+        <select id="orderSelect2" class="form-control">
           <option>Nombre</option>
           <option>% de Completitud Total</option>
           <option>% de Ejercicios completados</option>
-          <option>% de Quizzes completados</option>
-          <option>Promedio en quizzes</option>
           <option>% de Lecturas completadas</option>
+          <option>% de Quizzes completados</option>
+          <option>Promedio de Quizzes</option>
         </select>
-        <input type="checkbox" value="asc">Asc
-        <input type="checkbox" value="desc">Desc
-      </div> -->
+        <input type="radio" name="selectButon" value="asc">Asc
+        <input type="radio" name="selectButon" value="desc">Desc
+      </div>
 
   <div class="sidebar">
     <a href="#" class="btn-menu">INICIO</a>
     <ul class="nav">
         <li id="sede" class="btn1"><a href="#">Sedes</a>
             <ul>
-              <li class="btn2"><a href='#' class="btn2">Lima</a>
+              <li class="btn2"><a href="#" class="btn2">Lima</a>
                 <ul>
-                  <li id ='cohort-lima' type='button'><a href=''>2018</a></li>
-                  <li><a href='#'>2017</a></li>
-                  <li><a href='#'>2016</a></li>
+                  <li id ="cohort-lima" type="button"><a href="">2018</a></li>
+                  <li><a href="#">2017</a></li>
+                  <li><a href="#">2016</a></li>
                 </ul>
                 </li>
-              <li><a href='#'>Santiago de Chile</a></li>
-              <li><a href='#'>Guadalajara</a></li>
-              <li><a href='#'>Ciudad de México</a></li>
-              <li><a href='#'>Sao Paulo</a></li>
+              <li><a href="#">Santiago de Chile</a></li>
+              <li><a href="#">Guadalajara</a></li>
+              <li><a href="#">Ciudad de México</a></li>
+              <li><a href="#">Sao Paulo</a></li>
             </ul>
         </li>
         <li class="btn1"><a href="#">Estudiantes</a></li>
@@ -71,10 +72,11 @@
     <thead>
       <tr>
         <th>Nombre y apellido</th>
-        <th>Completitud (%)</th>
-        <th>Exercicios (%)</th>
-        <th>Lecturas (%)</th>
-        <th>Quizzes (%)</th>
+        <th>Completitud General</th>
+        <th>Completitud de Ejercicios</th>
+        <th>Completitud de Lecturas</th>
+        <th>Completitud de Quizzes</th>
+        <th>Promedio de Quizzes</th>
       </tr>
     </thead>
     <tbody id="container-user">
