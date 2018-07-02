@@ -61,3 +61,8 @@ Se utilizó la herramienta Figma para realizar el prototipo de alta fidelidad. A
 
 Asimismo, se implementará una vista donde se obtendrá el progreso por alumna.
 ![interfaz2](https://github.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/Draft%20-%20Dashboard%20Laboratoria-1.png "Interfaz2")
+
+#### Resultado web al 02 de julio 
+Para este 3er Sprint Demo se logró implementar e imprimir la función ComputeUserStats, en donde se muestran los datos de usuarios, completitud general, porcentaje de ejercicios, porcentaje de lecturas, porcentaje de quizzes y promedio de puntaje en quizzes, de la data proporcionada.
+
+![interfaz-Web](https://github.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/pantalla-principal-datadashboard.jpg "Interfaz Web")
