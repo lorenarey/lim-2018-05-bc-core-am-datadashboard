@@ -1,4 +1,3 @@
-const cohortSelect = document.getElementById('orderSelect')
 const responseContainerEl = document.getElementById('container-user')
 const usersUrl = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
 const progressUrl = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
@@ -52,10 +51,10 @@ const getData = (url, callback, stringData) => {
   requestData.send();
 };
 
+const cohortSelect = document.getElementById('orderSelect')
 cohortSelect.addEventListener('change', (e) => {
   const value = cohortSelect.options[cohortSelect.selectedIndex].value;
   getData(usersUrl, saveUsers, 'users');
 })
 
-document.getElementById("show-datos-and-order").classList.add("hidden");
 

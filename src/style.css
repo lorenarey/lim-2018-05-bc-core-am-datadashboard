@@ -109,16 +109,21 @@ a {
   width: 20%;
 }
 
-.table-container {
-  position:relative;
-  display: inline-block;
-  padding: 30px;
-  width: 80%;
-}
-
 .table {
   padding: 30px;
   width: 100%;
+}
+
+.content {
+  display: inline-flex;
+}
+
+.form-control {
+  display: inline-block;
+}
+
+.show-stats-and-order {
+  display: block;
 }
 
 @media screen and (max-width: 450px) {
@@ -136,6 +141,7 @@ a {
         display: block;
         text-align: center;
         width: 100%;
+        cursor: pointer;
     }
 
     .nav {
@@ -144,18 +150,11 @@ a {
 }
 
 /*footer {
-background:#000000;
-padding: 20px;
-    color: #ffffff
+  background:#000000;
+  padding: 20px;
+  color: #ffffff
   position: absolute;
   bottom:0;
   width: 100%;
 }
 
-
-footer {
-    background:#000000;
-    padding: 20px;
-    color: #ffffff;
-}
-*/

@@ -10,9 +10,9 @@
   </head>
 <body>
   <header class="logo-container">
-    <img class="img" src="..\img\Laboratoria_RGB_logo-03.png" width="40%">
+    <img class="img" src="..\img\Laboratoria_RGB_logo-03.png">
   </header>
-  <section class="content">
+ 
     <div class="filter-container">
       <form>
         <input type="text" placeholder="Filtrado de alumnas...">
@@ -20,45 +20,43 @@
       </form>
     </div>
 
+<section class="content">
     <div class="sidebar">
         <a href="#" class="btn-menu">INICIO</a>
         <ul class="nav">
             <li id="sede" class="btn1"><a href="#">Sedes</a>
                 <ul>
-                  <li class="btn2"><a href="#" class="btn2">Lima</a>
+                  <li><a href="#" class="btn2">Lima</a>
                     <ul>
                       <li id ="cohort-lima" type="button"><a href="">2018</a></li>
                       <li><a href="#">2017</a></li>
                       <li><a href="#">2016</a></li>
                     </ul>
-                    </li>
-                  <li><a href="#">Santiago de Chile</a></li>
-                  <li><a href="#">Guadalajara</a></li>
-                  <li><a href="#">Ciudad de México</a></li>
-                  <li><a href="#">Sao Paulo</a></li>
+                  </li>
+                  <li><a href="#" class="btn2">Santiago de Chile</a></li>
+                  <li><a href="#" class="btn2">Guadalajara</a></li>
+                  <li><a href="#" class="btn2">Ciudad de México</a></li>
+                  <li><a href="#" class="btn2">Sao Paulo</a></li>
                 </ul>
             </li>
-            <li class="btn1"><a href="#">Estudiantes</a></li>
         </ul>
-      </div>
-
-    <div class="table-container">
-        <div class="selectorCohort">
-            <select id="orderSelect" class="form-control">
-              <option value="">Front Developer</option>
-              <option value="">UX Designer</option>
-              <option value="">Js Chatbox</option>
-              <option value="">Jp Core Talent</option>
-              <option value="lim-2018-03-pre-core-pw">Pre Admisión 2018</option>
-              <option value="">Business GMD</option>
-              <option value="">Business Banbif</option>
-            </select>
-        </div>
     </div>
 
-    <div id="show-datos-and-order">
-      <div class="selectorStats">
-        <select id="orderSelect2" class="form-control">
+    <div class="selectorCohort">
+        <select id="orderSelect" class="form-control">
+          option value="">Front Developer</option>
+          <option value="">UX Designer</option>
+          <option value="">Js Chatbox</option>
+          <option value="">Jp Core Talent</option>
+          <option value="lim-2018-03-pre-core-pw" id="lim-2018-03-pre-core-pw">Pre Admisión 2018</option>
+          <option value="">Business GMD</option>
+          <option value="">Business Banbif</option>
+        </select>
+    </div>
+
+    <div id="show-stats-and-order">
+      <div class="selectorStats"> 
+        <select id="orderSelectStats" class="form-control">
           <option>Nombre</option>
           <option>% de Completitud Total</option>
           <option>% de Ejercicios completados</option>
