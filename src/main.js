@@ -57,5 +57,5 @@ cohortSelect.addEventListener('change', (e) => {
   getData(usersUrl, saveUsers, 'users');
 })
 
-
+document.getElementById("show-datos-and-order").classList.add("hidden");
 

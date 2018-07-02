@@ -20,8 +20,44 @@
       </form>
     </div>
 
-    <div class="selectorStats">
-        <button type="button" class="btn btn-success">Ordenar</button>
+    <div class="sidebar">
+        <a href="#" class="btn-menu">INICIO</a>
+        <ul class="nav">
+            <li id="sede" class="btn1"><a href="#">Sedes</a>
+                <ul>
+                  <li class="btn2"><a href="#" class="btn2">Lima</a>
+                    <ul>
+                      <li id ="cohort-lima" type="button"><a href="">2018</a></li>
+                      <li><a href="#">2017</a></li>
+                      <li><a href="#">2016</a></li>
+                    </ul>
+                    </li>
+                  <li><a href="#">Santiago de Chile</a></li>
+                  <li><a href="#">Guadalajara</a></li>
+                  <li><a href="#">Ciudad de México</a></li>
+                  <li><a href="#">Sao Paulo</a></li>
+                </ul>
+            </li>
+            <li class="btn1"><a href="#">Estudiantes</a></li>
+        </ul>
+      </div>
+
+    <div class="table-container">
+        <div class="selectorCohort">
+            <select id="orderSelect" class="form-control">
+              <option value="">Front Developer</option>
+              <option value="">UX Designer</option>
+              <option value="">Js Chatbox</option>
+              <option value="">Jp Core Talent</option>
+              <option value="lim-2018-03-pre-core-pw">Pre Admisión 2018</option>
+              <option value="">Business GMD</option>
+              <option value="">Business Banbif</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="show-datos-and-order">
+      <div class="selectorStats">
         <select id="orderSelect2" class="form-control">
           <option>Nombre</option>
           <option>% de Completitud Total</option>
@@ -32,58 +68,24 @@
         </select>
         <input type="radio" name="selectButon" value="asc">Asc
         <input type="radio" name="selectButon" value="desc">Desc
+        <button type="button" class="btn btn-success">Ordenar</button>
       </div>
-
-  <div class="sidebar">
-    <a href="#" class="btn-menu">INICIO</a>
-    <ul class="nav">
-        <li id="sede" class="btn1"><a href="#">Sedes</a>
-            <ul>
-              <li class="btn2"><a href="#" class="btn2">Lima</a>
-                <ul>
-                  <li id ="cohort-lima" type="button"><a href="">2018</a></li>
-                  <li><a href="#">2017</a></li>
-                  <li><a href="#">2016</a></li>
-                </ul>
-                </li>
-              <li><a href="#">Santiago de Chile</a></li>
-              <li><a href="#">Guadalajara</a></li>
-              <li><a href="#">Ciudad de México</a></li>
-              <li><a href="#">Sao Paulo</a></li>
-            </ul>
-        </li>
-        <li class="btn1"><a href="#">Estudiantes</a></li>
-    </ul>
-  </div>
-  
-  <div class="table-container">
-    <div class="selectorCohort">
-        <select id="orderSelect" class="form-control">
-          <option value="">Front Developer</option>
-          <option value="">UX Designer</option>
-          <option value="">Js Chatbox</option>
-          <option value="">Jp Core Talent</option>
-          <option value="lim-2018-03-pre-core-pw">Pre Admisión 2018</option>
-          <option value="">Business GMD</option>
-          <option value="">Business Banbif</option>
-        </select>
-      </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Nombre y apellido</th>
-        <th>Completitud General</th>
-        <th>Completitud de Ejercicios</th>
-        <th>Completitud de Lecturas</th>
-        <th>Completitud de Quizzes</th>
-        <th>Promedio de Quizzes</th>
-      </tr>
-    </thead>
-    <tbody id="container-user">
-
-    </tbody>
-  </table>
-</div>
+      
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre y apellido</th>
+            <th>Completitud General</th>
+            <th>Completitud de Ejercicios</th>
+            <th>Completitud de Lecturas</th>
+            <th>Completitud de Quizzes</th>
+            <th>Promedio de Quizzes</th>
+          </tr>
+        </thead>
+        <tbody id="container-user">
+        </tbody>
+      </table>
+    </div>
 
 </section>
 <footer>
