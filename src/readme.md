@@ -12,7 +12,8 @@ Así, el reto de este proyecto es crear una interfaz donde las TMs puedan ver y 
 El segundo proyecto solicitado es un Data Dashboard, donde las TM podrán revisar de manera más sencilla y gráfica el avance que las alumnas de laboratoria realizan en el LMS.
 
 ### Proceso de planificación
-Para realizar la planificación del proyecto, se utilizó un tablero Backlog. En este segundo sprint, el objetivo principal es realizar la impresión en HTML de los nombres y porcentaje de los ejercicios completados.
+Para realizar la planificación del proyecto, se utilizó un tablero Backlog.
+En este segundo sprint, el objetivo principal es realizar la impresión en HTML de los nombres y porcentaje de los ejercicios completados.
 ![backlog](https://github.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/backlog-2do-sprint.jpeg "backlog-2do-sprint")
 
 ### Conociendo al usuario

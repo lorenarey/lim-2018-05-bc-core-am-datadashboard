@@ -1,26 +1,21 @@
 const cohortSelect = document.getElementById('orderSelect')
-const responseContainer = document.getElementById('container-user')
-const usersUrl = '../data/cohorts/lim-2018-03-pre-core-pw/users.json'
-const progressUrl = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json'
-const cohortsUrl = '../data/cohorts.json'
-let users 
-let progress
-let courses
+const responseContainerEl = document.getElementById('container-user')
+const usersUrl = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
+const progressUrl = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
+const cohortsUrl = '../data/cohorts.json';
+let users;
+let progress;
+let courses;
 
-//declaramos el objeto global cohort data vacío que se llenará cuando se obtenga la data
-// las variables se puede cargar de cualquier archivo por que esta dentro del ob windows //
 
 const saveUsers = (event) => {
-  //guardndo la data user en cohortData.users
   users = JSON.parse(event.target.responseText);
   getData(progressUrl, saveProgress, 'progress');
-
 }
 
 const saveProgress = (event) => {
   progress = JSON.parse(event.target.responseText);
   getData(cohortsUrl, saveCohorts, 'cohorts');
-
 }
 
 const saveCohorts = (event) => {
@@ -31,20 +26,23 @@ const saveCohorts = (event) => {
 
   courses = Object.keys(currentCohort.coursesIndex)
 
+   
   const usersWithStats = computeUsersStats(users, progress, courses)
-  console.log(usersWithStats)
-  /*usersWithStats.forEach((user) => {
+  usersWithStats.forEach((user) => {
+    let totalPercent = (user.stats.percent === undefined || NaN) ?  0 : user.stats.percent;
+    let exercisesPercent = isNaN(user.stats.exercises.percent) ?  0 : user.stats.exercises.percent;
+    let readsPercent = isNaN(user.stats.reads.percent) ? 0 : user.stats.reads.percent;
+    let quizzesPercent = isNaN(user.stats.quizzes.percent) ? 0 : user.stats.quizzes.percent;
     const row = document.createElement('tr')
-    row.innerHTML = `<td>${user.name}</td>`;
-    responseContainerElem.appendChild('container-user')
-  })*/
+    row.innerHTML = `<td>${user.name}</td><td>${totalPercent}%</td><td>${exercisesPercent}%</td><td>${readsPercent}%</td><td>${quizzesPercent}%</td><td>${user.stats.quizzes.scoreAvg}</td>`;
+    responseContainerEl.appendChild(row)
+  })
 }
 
 const handleError = () => {
   console.log('hay un error')
 }
 
-//Creamos una funcion donde pasamos de parametro las url y el onload
 const getData = (url, callback, stringData) => {
 
   let requestData = new XMLHttpRequest();
