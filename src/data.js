@@ -86,7 +86,7 @@ window.sortUsers = (users, orderBy, OrderDirection) => {
   if (orderBy === "Nombre") {
     sortingList.sort((a, b) => {
       let firstUser = a.stats.name.toLowerCase(), lastUser = b.stats.name.toLowerCase();
-      if (fisrtUser < lastUser)
+      if (firstUser < lastUser)
         return -1
       if (firstUser > lastUser)
         return 1
