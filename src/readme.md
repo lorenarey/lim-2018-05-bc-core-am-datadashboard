@@ -12,9 +12,12 @@ Así, el reto de este proyecto es crear una interfaz donde las TMs puedan ver y 
 El segundo proyecto solicitado es un Data Dashboard, donde las TM podrán revisar de manera más sencilla y gráfica el avance que las alumnas de laboratoria realizan en el LMS.
 
 ### Proceso de planificación
-Para realizar la planificación del proyecto, se utilizó un tablero Backlog.
+Para realizar la planificación del proyecto, se utilizó un tablero Backlog y un planificador online en la plataforma Trello.
 En este tercer sprint, el objetivo principal es realizar la impresión en HTML de los datos solicitados en el Readme principal.
 ![backlog](https://github.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/backlog-2do-sprint.jpeg "backlog-2do-sprint")
+
+![trello](https://github.com/DanellySotomayor/lim-2018-05-bc-core-am-datadashboard/blob/master/img/trello-data.jpg "trello-3er-sprint")
+
 
 ### Proceso de planeamiento del proyecto
 #### Definición del producto 
