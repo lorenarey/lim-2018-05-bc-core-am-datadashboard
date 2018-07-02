@@ -118,14 +118,6 @@ a {
   display: inline-flex;
 }
 
-.form-control {
-  display: inline-block;
-}
-
-.show-stats-and-order {
-  display: block;
-}
-
 @media screen and (max-width: 450px) {
     body {
         padding-top: 80px;
