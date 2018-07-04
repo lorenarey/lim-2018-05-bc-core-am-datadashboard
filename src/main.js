@@ -2,7 +2,8 @@ const responseContainerEl = document.getElementById('container-user');
 const cohortSelect = document.getElementById('cohortSelect');
 let content = document.getElementById('content');
 let contentTable = document.getElementById('show-stats-and-order');
-const orderSelect = document.getElementById('orderSelect')
+const orderSelect = document.getElementById('orderSelect');
+const searchInput = document.getElementById('search-input');
 const usersUrl = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
 const progressUrl = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
 const cohortsUrl = '../data/cohorts.json';
@@ -11,6 +12,8 @@ let users;
 let progress;
 let cohorts;
 let courses;
+
+
 
 
 
@@ -42,9 +45,11 @@ const getData = (url, callback, stringData) => {
   requestData.send();
 };
 
-const showData = (usersWithStats) => {
+
+
+const showData = (newUser) => {
   responseContainerEl.innerHTML = "";
-  usersWithStats.forEach((user) => {
+  newUser.forEach((user) => {
     let totalPercent = (user.stats.percent === undefined || NaN) ?  0 : user.stats.percent;
     let exercisesPercent = isNaN(user.stats.exercises.percent) ?  0 : user.stats.exercises.percent;
     let readsPercent = isNaN(user.stats.reads.percent) ? 0 : user.stats.reads.percent;
@@ -71,8 +76,8 @@ cohortSelect.addEventListener('change', (e) => {
     orderDirection: '',
     search: '',
   }
-  const usersWithStats = processCohortData(options)
-  showData(usersWithStats);
+  const newUser = processCohortData(options)
+  showData(newUser);
 });
 
   orderSelect.addEventListener('change', (e) => {  
@@ -86,8 +91,8 @@ cohortSelect.addEventListener('change', (e) => {
     orderDirection: orderArr[1],
     search: '',
   }
-  const usersWithStats = processCohortData(options)
-  showData(usersWithStats);
+  const newUser = processCohortData(options)
+  showData(newUser);
 })
 
 getData(usersUrl, saveUsers, 'users');
