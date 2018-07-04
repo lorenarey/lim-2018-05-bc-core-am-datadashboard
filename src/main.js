@@ -27,6 +27,7 @@ const saveProgress = (event) => {
 const saveCohorts = (event) => {
   cohorts = JSON.parse(event.target.responseText);
   content.classList.add('loaded');
+  console.log(cohorts);
 }
 
 const handleError = () => {
@@ -91,4 +92,8 @@ cohortSelect.addEventListener('change', (e) => {
 })
 
 getData(usersUrl, saveUsers, 'users');
+
+
+
+
 
