@@ -1,9 +1,10 @@
 const responseContainerEl = document.getElementById('container-user');
 const cohortSelect = document.getElementById('cohortSelect');
-let content = document.getElementById('content');
+let content = document.getElementById('content'); //nuevo selectores
 let contentTable = document.getElementById('show-stats-and-order');
 const orderSelect = document.getElementById('orderSelect');
 const searchInput = document.getElementById('search-input');
+const selectA=document.getElementById("select");
 const usersUrl = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
 const progressUrl = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
 const cohortsUrl = '../data/cohorts.json';
@@ -12,10 +13,6 @@ let users;
 let progress;
 let cohorts;
 let courses;
-
-
-
-
 
 const saveUsers = (event) => {
   users = JSON.parse(event.target.responseText);
@@ -30,6 +27,14 @@ const saveProgress = (event) => {
 const saveCohorts = (event) => {
   cohorts = JSON.parse(event.target.responseText);
   content.classList.add('loaded');
+
+  //para listar los cohorts filtrados por "lim"
+  cohorts.forEach((cohort) => {
+    nameCohorts = cohort.id;
+    if (nameCohorts.indexOf('lim') === 0){
+    selectA.innerHTML += `<option value="${nameCohorts}">${nameCohorts}</option>`
+    }
+})
 }
 
 const handleError = () => {
@@ -45,8 +50,6 @@ const getData = (url, callback, stringData) => {
   requestData.send();
 };
 
-
-
 const showData = (newUser) => {
   responseContainerEl.innerHTML = "";
   newUser.forEach((user) => {
@@ -60,13 +63,33 @@ const showData = (newUser) => {
   })
 }
 
-
-cohortSelect.addEventListener('change', (e) => {
+//para enlazar con el selector anterior
+ cohortSelect.addEventListener('change', (e) => {
   contentTable.classList.add('loaded');
   
   const value = cohortSelect.options[cohortSelect.selectedIndex].value;
   currentCohort = cohorts.find((cohort) => {
     return cohort.id === value;
+  }); 
+  
+  const options = {
+    cohort : currentCohort,
+    cohortData : {users, progress},
+    orderBy: '',
+    orderDirection: '',
+    search: '',
+  }
+  const newUser = processCohortData(options)
+  showData(newUser);
+});
+  
+
+//para enlazar con el selector de cohorts NUEVO
+content.addEventListener('change', (e) => {
+  contentTable.classList.add('loaded');
+  const value = content.options[content.selectedIndex].value; //si esta línea está comentada, sí lista pero no ordena
+  currentCohort = cohorts.find((cohort) => {
+    return cohort.id === 'lim-2018-03-pre-core-pw';
   });
   
   const options = {
@@ -79,11 +102,14 @@ cohortSelect.addEventListener('change', (e) => {
   const newUser = processCohortData(options)
   showData(newUser);
 });
+//-------------------------------------------------------
 
-  orderSelect.addEventListener('change', (e) => {  
+
+
+//selector de ordenado ascedente y descendente
+orderSelect.addEventListener('change', (e) => {  
   const orderValue = orderSelect.options[orderSelect.selectedIndex].value;
   const orderArr = orderValue.split('|')
-  
   const options = {
     cohort : currentCohort,
     cohortData : {users, progress},

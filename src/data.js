@@ -89,7 +89,7 @@ window.sortUsers = (users, orderBy, orderDirection) => {
   if (orderDirection ==='asc'){
     if (orderBy === 'name') {
       sortedUsers = users.sort((a ,b) => {
-        let firstUser = a.name.toLowerCase(), lastUser = b.name.toLowerCase();
+        let firstUser = a.name, lastUser = b.name;
         if (firstUser < lastUser)
           return -1
         if (firstUser > lastUser)
@@ -100,7 +100,7 @@ window.sortUsers = (users, orderBy, orderDirection) => {
   if (orderDirection ==='desc'){
     if (orderBy === 'name') {
       sortedUsers = users.sort((a ,b) => {
-        let firstUser = a.name.toLowerCase(), lastUser = b.name.toLowerCase();
+        let firstUser = a.name, lastUser = b.name;
         if (firstUser < lastUser)
           return 1
         if (firstUser > lastUser)

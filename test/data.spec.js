@@ -78,36 +78,77 @@ describe('data', () => {
   describe('sortUsers(users, orderBy, orderDirection)', () => {
     let user1 = {
       stats: {
-        name : "",
-        percent: 0,
+        name : "Lorena Reyes",
+        percent: 100,
         exercises : {
-          total: 0,
-          completed: 0,
-          percent: 0
+          total: 2,
+          completed: 2,
+          percent: 100
         },
         reads : {
-          total: 0,
-          completed: 0,
-          percent: 0
+          total: 5,
+          completed: 5,
+          percent: 5
         },
         quizzes : {
-          total: 0,
-          completed: 0,
-          percent: 0,
-          scoreSum: 0,
-          scoreAvg: 0
+          total: 4,
+          completed: 4,
+          percent: 100,
+          scoreSum: 200,
+          scoreAvg: 50
         }
       }
     }
 
-    it('debería retornar arreglo de usuarios ordenado por nombre ASC');
-    it('debería retornar arreglo de usuarios ordenado por nombre DESC');
-    it('debería retornar arreglo de usuarios ordenado por porcentaje general ASC');
-    it('debería retornar arreglo de usuarios ordenado por porcentaje general DESC');
-    it('debería retornar arreglo de usuarios ordenado por ejercicios completados ASC');
-    it('debería retornar arreglo de usuarios ordenado por ejercicios completados DESC');
-    it('debería retornar arreglo de usuarios ordenado por quizzes completados ASC');
-    it('debería retornar arreglo de usuarios ordenado por quizzes completados DESC');
+    let user2 = {
+      stats: {
+        name : "Danelly Sotomayor",
+        percent: 53,
+        exercises : {
+          total: 2,
+          completed: 1,
+          percent: 50
+        },
+        reads : {
+          total: 15,
+          completed: 10,
+          percent: 7
+        },
+        quizzes : {
+          total: 6,
+          completed: 6,
+          percent: 100,
+          scoreSum: 600,
+          scoreAvg: 100
+        }
+      }
+    }
+    let usersTest = [user1, user2]
+
+    it('debería retornar arreglo de usuarios ordenado por nombre ASC', () => {
+      assert.deepEqual(window.sortUsers(usersTest, "name", "asc"), [user2,user1])
+    });
+    it('debería retornar arreglo de usuarios ordenado por nombre DESC', () => {
+      assert.deepEqual(window.sortUsers(usersTest, "name", "desc"), [user1,user2])
+    });
+    it('debería retornar arreglo de usuarios ordenado por porcentaje general ASC', () => {
+      assert.deepEqual(window.sortUsers(usersTest, "completed", "asc"), [user2,user1])
+    });
+    it('debería retornar arreglo de usuarios ordenado por porcentaje general DESC', () => {
+      assert.deepEqual(window.sortUsers(usersTest, "completed", "desc"), [user1,user2])
+    });
+    it('debería retornar arreglo de usuarios ordenado por ejercicios completados ASC', () => {
+      assert.deepEqual(window.sortUsers(usersTest, "exercises", "asc"), [user2,user1])
+    });
+    it('debería retornar arreglo de usuarios ordenado por ejercicios completados DESC', () => {
+      assert.deepEqual(window.sortUsers(usersTest, "exercises", "desc"), [user1,user2])
+    });
+    it('debería retornar arreglo de usuarios ordenado por quizzes completados ASC', () => {
+      assert.deepEqual(window.sortUsers(usersTest, "quizzes", "asc"), [user2,user1])
+    });
+    it('debería retornar arreglo de usuarios ordenado por quizzes completados DESC', () => {
+      assert.deepEqual(window.sortUsers(usersTest, "quizzes", "desc"), [user1,user2])
+    }););
     it('debería retornar arreglo de usuarios ordenado por score promedio en quizzes completados ASC');
     it('debería retornar arreglo de usuarios ordenado por score promedio en quizzes completados DESC');
     it('debería retornar arreglo de usuarios ordenado por lecturas (reads) completadas ASC');
