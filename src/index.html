@@ -20,13 +20,12 @@
       </form>
     </div>
 
-<section class="content">
+
     <div class="sidebar">
-        <a href="#" class="btn-menu">INICIO</a>
         <ul class="nav">
             <li id="sede" class="btn1"><a href="#">Sedes</a>
                 <ul>
-                  <li><a href="#" class="btn2">Lima</a>
+                  <li id="show-years"><a href="#" class="btn2">Lima</a>
                     <ul>
                       <li id ="cohort-lima" type="button"><a href="">2018</a></li>
                       <li><a href="#">2017</a></li>
@@ -41,9 +40,10 @@
             </li>
         </ul>
     </div>
-
+    <section id="content" class="content">
     <div class="selectorCohort">
-        <select id="orderSelect" class="form-control">
+        <select id="cohortSelect" class="form-control">
+          <option selected>Escoge cohort</option>
           <option value="">Front Developer</option>
           <option value="">UX Designer</option>
           <option value="">Js Chatbox</option>
@@ -54,19 +54,26 @@
         </select>
     </div>
 
-    <div id="show-stats-and-order">
+    <div id="show-stats-and-order" class="show-stats-and-order">
       <div class="selectorStats"> 
-        <select id="orderSelectStats" class="form-control">
-          <option>Nombre</option>
-          <option>% de Completitud Total</option>
-          <option>% de Ejercicios completados</option>
-          <option>% de Lecturas completadas</option>
-          <option>% de Quizzes completados</option>
-          <option>Promedio de Quizzes</option>
+        <select id="orderSelect" class="form-control">
+          <option selected>Ordenar por...</option>
+          <optgroup label="Ascendente"></optgroup>
+            <option value="name|asc">Nombre</option>
+            <option value="completed|asc">% de Completitud Total</option>
+            <option value="exercises|asc">% de Ejercicios completados</option>
+            <option value="reads|asc">% de Lecturas completadas</option>
+            <option value="quizzes|asc">% de Quizzes completados</option>
+            <option value="quizzesAvg|asc">Promedio de Quizzes</option>
+          <optgroup label="Descendente"></optgroup>
+            <option value="name|desc">Nombre</option>
+            <option value="completed|desc">% de Completitud Total</option>
+            <option value="exercises|desc">% de Ejercicios completados</option>
+            <option value="reads|desc">% de Lecturas completadas</option>
+            <option value="quizzes|desc">% de Quizzes completados</option>
+            <option value="quizzesAvg|desc">Promedio de Quizzes</option>  
         </select>
-        <input type="radio" name="selectButon" value="asc">Asc
-        <input type="radio" name="selectButon" value="desc">Desc
-        <button type="button" class="btn btn-success">Ordenar</button>
+        <input type="button" class="btn btn-success" value="Ordenar">
         <br><br>
       </div>
       

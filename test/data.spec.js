@@ -76,6 +76,29 @@ describe('data', () => {
   });
 
   describe('sortUsers(users, orderBy, orderDirection)', () => {
+    let user1 = {
+      stats: {
+        name : "",
+        percent: 0,
+        exercises : {
+          total: 0,
+          completed: 0,
+          percent: 0
+        },
+        reads : {
+          total: 0,
+          completed: 0,
+          percent: 0
+        },
+        quizzes : {
+          total: 0,
+          completed: 0,
+          percent: 0,
+          scoreSum: 0,
+          scoreAvg: 0
+        }
+      }
+    }
 
     it('debería retornar arreglo de usuarios ordenado por nombre ASC');
     it('debería retornar arreglo de usuarios ordenado por nombre DESC');
