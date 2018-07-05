@@ -1,5 +1,5 @@
 window.computeUsersStats = (users, progress, courses) => {
-  let usersWithStats = users.map((user) => {
+  let newUser = users.map((user) => {
     let percent;
     let totalExcercises = 0;
     let completedExercises = 0;
@@ -14,9 +14,8 @@ window.computeUsersStats = (users, progress, courses) => {
     courses.forEach(courseName => {
       if(progress[user.id].hasOwnProperty(courseName)){
         percent = progress[user.id].intro.percent;
+      //calculamos datos de ejercicios (completitud, total de ejercicios completados)
         const userUnits = progress[user.id].intro.units;
-        
-    //calculamos datos de ejercicios (completitud, total de ejercicios completados)
         Object.keys(userUnits).forEach((unitName) => {
           const parts = userUnits[unitName].parts
           Object.keys(parts).forEach((partName) => {
@@ -47,7 +46,6 @@ window.computeUsersStats = (users, progress, courses) => {
             }    
           })
         })
-
       } 
     })
     //calculamos porcentajes (ejercicios, lecturas y quizzes)
@@ -56,10 +54,10 @@ window.computeUsersStats = (users, progress, courses) => {
     const percentQuizzes = (completedQuizzes / totalQuizzes)*100
 
     //El valor de retorno dará como resultado el usuario junto con el progreso extraído arriba
-    const newUser = {
+    const usersWithStats = {
       name: user.name.toUpperCase(),
       stats: {
-        percent: Math.round(percent),
+        percent: isNaN(Math.round(percent)) ? 0 : Math.round(percent),
         exercises: {
           total: totalExcercises,
           completed: completedExercises,
@@ -80,19 +78,18 @@ window.computeUsersStats = (users, progress, courses) => {
       }
     }
     
-    return newUser
+    return usersWithStats
   });
-  return usersWithStats;
+  return newUser;
   
 }
 
 window.sortUsers = (users, orderBy, orderDirection) => {
   let sortedUsers;
-
   if (orderDirection ==='asc'){
     if (orderBy === 'name') {
       sortedUsers = users.sort((a ,b) => {
-        let firstUser = a.name.toLowerCase(), lastUser = b.name.toLowerCase();
+        let firstUser = a.name, lastUser = b.name;
         if (firstUser < lastUser)
           return -1
         if (firstUser > lastUser)
@@ -100,15 +97,84 @@ window.sortUsers = (users, orderBy, orderDirection) => {
       });
     }
   }
-
   if (orderDirection ==='desc'){
     if (orderBy === 'name') {
       sortedUsers = users.sort((a ,b) => {
-        let firstUser = a.name.toLowerCase(), lastUser = b.name.toLowerCase();
+        let firstUser = a.name, lastUser = b.name;
         if (firstUser < lastUser)
           return 1
         if (firstUser > lastUser)
           return -1
+      });
+    }
+  }
+  if (orderDirection ==='asc'){
+    if (orderBy === 'completed') {
+      sortedUsers = users.sort((a ,b) => {
+        return a.stats.percent - b.stats.percent;
+      });
+    }
+  }
+  if (orderDirection ==='desc'){
+    if (orderBy === 'completed') {
+      sortedUsers = users.sort((a ,b) => {
+        return b.stats.percent - a.stats.percent;
+      });
+    }
+  }
+  if (orderDirection ==='asc'){
+    if (orderBy === 'exercises') {
+      sortedUsers = users.sort((a ,b) => {
+        return a.stats.exercises.completed - b.stats.exercises.completed;
+      });
+    }
+  }
+  if (orderDirection ==='desc'){
+    if (orderBy === 'exercises') {
+      sortedUsers = users.sort((a ,b) => {
+        return b.stats.exercises.completed - a.stats.exercises.completed;
+      });
+    }
+  }
+  if (orderDirection ==='asc'){
+    if (orderBy === 'reads') {
+      sortedUsers = users.sort((a ,b) => {
+        return a.stats.reads.completed - b.stats.reads.completed;
+      });
+    }
+  }
+  if (orderDirection ==='desc'){
+    if (orderBy === 'reads') {
+      sortedUsers = users.sort((a ,b) => {
+        return b.stats.reads.completed - a.stats.reads.completed;
+      });
+    }
+  }
+  if (orderDirection ==='asc'){
+    if (orderBy === 'quizzes') {
+      sortedUsers = users.sort((a ,b) => {
+        return a.stats.quizzes.completed - b.stats.quizzes.completed;
+      });
+    }
+  }
+  if (orderDirection ==='desc'){
+    if (orderBy === 'quizzes') {
+      sortedUsers = users.sort((a ,b) => {
+        return b.stats.quizzes.completed - a.stats.quizzes.completed;
+      });
+    }
+  }
+  if (orderDirection ==='asc'){
+    if (orderBy === 'quizzesAvg') {
+      sortedUsers = users.sort((a ,b) => {
+        return a.stats.quizzes.scoreAvg - b.stats.quizzes.scoreAvg;
+      });
+    }
+  }
+  if (orderDirection ==='desc'){
+    if (orderBy === 'quizzesAvg') {
+      sortedUsers = users.sort((a ,b) => {
+        return b.stats.quizzes.scoreAvg - a.stats.quizzes.scoreAvg;
       });
     }
   }

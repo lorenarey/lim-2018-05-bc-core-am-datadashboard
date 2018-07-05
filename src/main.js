@@ -29,10 +29,13 @@ const saveCohorts = (event) => {
   content.classList.add('loaded');
 
   //para listar los cohorts filtrados por "lim"
+  
   cohorts.forEach((cohort) => {
+    
     nameCohorts = cohort.id;
     if (nameCohorts.indexOf('lim') === 0){
     selectA.innerHTML += `<option value="${nameCohorts}">${nameCohorts}</option>`
+    processCohortData()
     }
 })
 }
@@ -85,7 +88,7 @@ const showData = (newUser) => {
   
 
 //para enlazar con el selector de cohorts NUEVO
-content.addEventListener('change', (e) => {
+/* content.addEventListener('change', (e) => {
   contentTable.classList.add('loaded');
   const value = content.options[content.selectedIndex].value; //si esta línea está comentada, sí lista pero no ordena
   currentCohort = cohorts.find((cohort) => {
@@ -101,7 +104,7 @@ content.addEventListener('change', (e) => {
   }
   const newUser = processCohortData(options)
   showData(newUser);
-});
+}); */
 //-------------------------------------------------------
 
 
