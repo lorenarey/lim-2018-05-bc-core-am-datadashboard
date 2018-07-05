@@ -36,23 +36,6 @@ const saveCohorts = (event) => {
     }
   })
 
-  searchInput.addEventListener('input', () => {
-    let search = searchInput.value;
-  
-    const options = {
-      cohort : currentCohort,
-      cohortData : {users, progress},
-      orderBy: '',
-      orderDirection: '',
-      search: '',
-    }
-  
-    options.search = search;
-    const searching = processCohortData(options);
-    responseContainerEl.innerHTML = '';
-    showData(searching);
-  });
-
   //sirve para mostrar la tabla con los stats
   cohortSelect.addEventListener('change', (e) => {
     contentTable.classList.add('loaded');
@@ -71,6 +54,40 @@ const saveCohorts = (event) => {
   const newUser = processCohortData(options)
   showData(newUser);
 });
+
+//buscador de alumnas
+searchInput.addEventListener('input', () => {
+  let search = searchInput.value;
+
+  const options = {
+    cohort : currentCohort,
+    cohortData : {users, progress},
+    orderBy: '',
+    orderDirection: '',
+    search: '',
+  }
+
+  options.search = search;
+  const searching = processCohortData(options);
+  responseContainerEl.innerHTML = '';
+  showData(searching);
+});
+
+//selector de ordenado ascedente y descendente
+orderSelect.addEventListener('change', (e) => {  
+  const orderValue = orderSelect.options[orderSelect.selectedIndex].value;
+  const orderArr = orderValue.split('|')
+  const options = {
+    cohort : currentCohort,
+    cohortData : {users, progress},
+    orderBy: orderArr[0],
+    orderDirection: orderArr[1],
+    search: '',
+  }
+  const newUser = processCohortData(options)
+  showData(newUser);
+});
+
 }
 
 const handleError = () => {
@@ -101,19 +118,6 @@ const showData = (newUser) => {
   })
 }
 
-//selector de ordenado ascedente y descendente
-orderSelect.addEventListener('change', (e) => {  
-  const orderValue = orderSelect.options[orderSelect.selectedIndex].value;
-  const orderArr = orderValue.split('|')
-  const options = {
-    cohort : currentCohort,
-    cohortData : {users, progress},
-    orderBy: orderArr[0],
-    orderDirection: orderArr[1],
-    search: '',
-  }
-  const newUser = processCohortData(options)
-  showData(newUser);
-})
+
 
 getData(usersUrl, saveUsers, 'users')

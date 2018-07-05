@@ -20,7 +20,7 @@ describe('data', () => {
 
     const cohort = fixtures.cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
     const courses = Object.keys(cohort.coursesIndex);
-    const { users, progress } = fixtures;
+    const {users, progress} = fixtures;
 
     it('debería retornar arreglo de usuarios con propiedad stats', () => {
       const processed = computeUsersStats(users, progress, courses);
@@ -140,10 +140,10 @@ describe('data', () => {
         },
         quizzes : {
           total: 10,
-          completed: 8,
-          percent: 80,
-          scoreSum: 400,
-          scoreAvg: 50
+          completed: 9,
+          percent: 90,
+          scoreSum: 540,
+          scoreAvg: 60
         }
       }
     }
@@ -174,23 +174,71 @@ describe('data', () => {
     it('debería retornar arreglo de usuarios ordenado por quizzes completados DESC', () => {
       assert.deepEqual(window.sortUsers(usersTest, "quizzes", "desc"), [user3, user2, user1])
     });
-    it('debería retornar arreglo de usuarios ordenado por score promedio en quizzes completados ASC');
-    it('debería retornar arreglo de usuarios ordenado por score promedio en quizzes completados DESC');
-    it('debería retornar arreglo de usuarios ordenado por lecturas (reads) completadas ASC');
-    it('debería retornar arreglo de usuarios ordenado por lecturas (reads) completadas DESC');
+    it('debería retornar arreglo de usuarios ordenado por score promedio en quizzes completados ASC', () => {
+    assert.deepEqual(window.sortUsers(usersTest, "scoreAvg", "asc"), [user1, user3, user2])
+    });
+    it('debería retornar arreglo de usuarios ordenado por score promedio en quizzes completados DESC', () => {
+      assert.deepEqual(window.sortUsers(usersTest, "scoreAvg", "desc"), [user2, user3, user1])
+    });
+    it('debería retornar arreglo de usuarios ordenado por lecturas (reads) completadas ASC', () => {
+      assert.deepEqual(window.sortUsers(usersTest, "reads", "asc"), [user3, user1, user2])
+    });
+    it('debería retornar arreglo de usuarios ordenado por lecturas (reads) completadas DESC', () => {
+      assert.deepEqual(window.sortUsers(usersTest, "reads", "desc"), [user2, user1, user3])
+    });
 
   });
 
   describe('filterUsers(users, filterBy)', () => {
-
-    it('debería retornar nuevo arreglo solo con usuarios con nombres que contengan string (case insensitive)');
-
+    it('debería retornar nuevo arreglo solo con usuarios con nombres que contengan string (case insensitive)', () => {
+      let filterList = [{"id":"15TkBigdPLMetXb9W9rFnBvUEN92","name":"luz edith","locale": "es-PE","signupCohort":"lim-2018-03-pre-core-pw","timezone":"America/Lima","role":"student"},{"id":"19GgN0LHXUgjZ6Hbd713hAWGoh83","timezone":"America/Lima","name":"BRENDA DURAND","locale":"es-PE","signupCohort":"lim-2018-03-pre-core-pw","role":"student"},{"id":"1AUu4Up4pJZ6SDQCyayVu16mMMp1","signupCohort":"lim-2018-03-pre-core-pw","timezone":"America/Lima","name":"katherine alva","locale":"es-PE","role":"student"}]
+      assert.deepEqual(window.filterUsers(users,"BRENDA DURAND"), filterList);
+      assert.deepEqual(window.filterUsers(users,"katherine alva"), filterList);
+    });
   });
+
+  let options = {
+    cohort: "lim-2018-03-pre-core-pw",
+    cohortData : {
+      users,
+      progress,
+      coursesIndex : ["intro"]
+    },
+    orderBy:"name",
+    orderDirection:"asc",
+    search : "lorena"
+  }
 
   describe('processCohortData({ cohortData, orderBy, orderDirection, filterBy })', () => {
 
-    it('debería retornar arreglo de usuarios con propiedad stats y aplicar sort y filter');
-
+    it('debería retornar arreglo de usuarios con propiedad stats y aplicar sort y filter', () => {
+        assert.deepEqual(window.processCohortData(options),[{
+          stats: {
+            name : "lorena",
+            percent: 100,
+            exercises : {
+              total: 2,
+              completed: 2,
+              percent: 100
+            },
+            reads : {
+              total: 11,
+              completed: 11,
+              percent: 100
+            },
+            quizzes : {
+              total: 3,
+              completed: 3,
+              percent: 100,
+              scoreSum: 263,
+              scoreAvg: 88
+            }
+          }
+      }]);
   });
-
+  
 });
+  
+});
+
+  

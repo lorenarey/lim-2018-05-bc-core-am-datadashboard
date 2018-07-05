@@ -177,7 +177,6 @@ window.filterUsers = (users, search) => {
   return user.name.indexOf(search.toUpperCase()) !== -1;
   });
   return filteringList;
-  console.log(filterUsers)
 }
 
 window.processCohortData = (options) => {
@@ -191,18 +190,3 @@ window.processCohortData = (options) => {
   usersProcess = filterUsers(usersProcess, search);
   return usersProcess;
 }
-
-// AGREGAMOS EVENTO AL INPUT PARA FILTRAR DEPENDIENDO DE LO QUE ESCRIBIO EL USUARIO
-// inputElemento.addEventListener('input', (event) => {
-//   const valorEscritoPorUsuario = event.target.value;
-//   const arrayDeFrutasFiltrado = arrayDeFrutas.filter((nombreDefruta) => {
-//     return nombreDefruta.toUpperCase().indexOf(valorEscritoPorUsuario.toUpperCase()) !== -1;
-//   });
-//   const ulElemento = document.getElementById('lista-de-frutas');
-//   ulElemento.innerHTML = '';
-//   arrayDeFrutasFiltrado.forEach((nombreDefruta) => {
-//     ulElemento.innerHTML += `
-//     <li>${nombreDefruta}</li>
-//     `
-//   })
-// })
