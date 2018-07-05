@@ -36,12 +36,30 @@ const saveCohorts = (event) => {
     }
   })
 
+  searchInput.addEventListener('input', () => {
+    let search = searchInput.value;
+  
+    const options = {
+      cohort : currentCohort,
+      cohortData : {users, progress},
+      orderBy: '',
+      orderDirection: '',
+      search: '',
+    }
+  
+    options.search = search;
+    const searching = processCohortData(options);
+    responseContainerEl.innerHTML = '';
+    showData(searching);
+  });
+
   //sirve para mostrar la tabla con los stats
   cohortSelect.addEventListener('change', (e) => {
-  contentTable.classList.add('loaded');
-  const value = cohortSelect.options[cohortSelect.selectedIndex].value; 
-    return cohort.id === 'lim-2018-03-pre-core-pw';
-  });
+    contentTable.classList.add('loaded');
+    const value = cohortSelect.options[cohortSelect.selectedIndex].value; 
+    currentCohort = cohorts.find((cohort) => {
+      return cohort.id === value;
+    });
     
   const options = {
     cohort : currentCohort,
@@ -52,6 +70,7 @@ const saveCohorts = (event) => {
   }
   const newUser = processCohortData(options)
   showData(newUser);
+});
 }
 
 const handleError = () => {
@@ -97,5 +116,4 @@ orderSelect.addEventListener('change', (e) => {
   showData(newUser);
 })
 
-getData(usersUrl, saveUsers, 'users');
-
+getData(usersUrl, saveUsers, 'users')
