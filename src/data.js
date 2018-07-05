@@ -28,14 +28,14 @@ window.computeUsersStats = (users, progress, courses) => {
                 completedExercises += excercise.completed;
               });          
             }
-    //calculamos datos de lecturas (completitud, total de lecturas completadas)
+      //calculamos datos de lecturas (completitud, total de lecturas completadas)
             if (part.hasOwnProperty('type')) {
               if(part.type === 'read'){
               totalReads += 1; 
               completedReads += part.completed 
               }
             }
-    //calculamos datos de quizzes (completitud, total de quizzes completados, suma de score y promedio de score)       
+      //calculamos datos de quizzes (completitud, total de quizzes completados, suma de score y promedio de score)       
             if (part.hasOwnProperty('type')) {
               if(part.type === 'quiz'){
               totalQuizzes +=1;
@@ -77,11 +77,9 @@ window.computeUsersStats = (users, progress, courses) => {
         }
       }
     }
-    
     return usersWithStats
   });
-  return newUser;
-  
+  return newUser; 
 }
 
 window.sortUsers = (users, orderBy, orderDirection) => {
@@ -89,22 +87,14 @@ window.sortUsers = (users, orderBy, orderDirection) => {
   if (orderDirection ==='asc'){
     if (orderBy === 'name') {
       sortedUsers = users.sort((a ,b) => {
-        let firstUser = a.name, lastUser = b.name;
-        if (firstUser < lastUser)
-          return -1
-        if (firstUser > lastUser)
-          return 1
+        return a.name.localeCompare(b.name);
       });
     }
   }
   if (orderDirection ==='desc'){
     if (orderBy === 'name') {
       sortedUsers = users.sort((a ,b) => {
-        let firstUser = a.name, lastUser = b.name;
-        if (firstUser < lastUser)
-          return 1
-        if (firstUser > lastUser)
-          return -1
+        return b.name.localeCompare(a.name);
       });
     }
   }
@@ -184,7 +174,7 @@ window.sortUsers = (users, orderBy, orderDirection) => {
 
 window.filterUsers = (users, search) => {
   let filteringList = users.filter(user => {
-  return user.name.toUpperCase().indexOf(search.toUpperCase()) !== -1;
+  return user.name.indexOf(search.toUpperCase()) !== -1;
   });
   return filteringList;
 }
