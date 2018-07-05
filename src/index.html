@@ -13,10 +13,10 @@
     <img class="img" src="..\img\Laboratoria_RGB_logo-03.png">
   </header>
  
+  <main>
     <div class="filter-container">
       <form>
-        <input type="text" placeholder="Filtrado de alumnas...">
-        <button type="submit"><i class="fa fa-search"></i></button>
+          <input type="text" id="search-input" name="q" placeholder="Filtrar por nombre">
       </form>
     </div>
 
@@ -25,23 +25,22 @@
         <ul class="nav">
             <li id="sede" class="btn1"><a href="#">Sedes</a>
                 <ul>
-                  <li id="show-years"><a href="#" class="btn2">Lima</a>
-                    <ul>
-                      <li id ="cohort-lima" type="button"><a href="">2018</a></li>
-                      <li><a href="#">2017</a></li>
-                      <li><a href="#">2016</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#" class="btn2">Santiago de Chile</a></li>
-                  <li><a href="#" class="btn2">Guadalajara</a></li>
-                  <li><a href="#" class="btn2">Ciudad de México</a></li>
-                  <li><a href="#" class="btn2">Sao Paulo</a></li>
+                  <li id="show-years"><a href="#" class="btn2" id="lim">Lima</a></li>
+                  <li><a href="#" class="btn2" id="cdmx">Ciudad de México</a></li>
+                  <li><a href="#" class="btn2" id="gdl">Guadalajara</a></li>
+                  <li><a href="#" class="btn2" id="scl">Santiago de Chile</a></li>
+                  <li><a href="#" class="btn2" id="spl">Sao Paulo</a></li>
                 </ul>
             </li>
         </ul>
     </div>
     <section id="content" class="content">
     <div class="selectorCohort">
+
+       
+        <select id="select" class="form-control">
+            <option>Escoge cohort...</option>
+        </select>
         <select id="cohortSelect" class="form-control">
           <option selected>Escoge cohort</option>
           <option value="">Front Developer</option>
@@ -52,6 +51,8 @@
           <option value="">Business GMD</option>
           <option value="">Business Banbif</option>
         </select>
+
+
     </div>
 
     <div id="show-stats-and-order" class="show-stats-and-order">
@@ -73,10 +74,8 @@
             <option value="quizzes|desc">% de Quizzes completados</option>
             <option value="quizzesAvg|desc">Promedio de Quizzes</option>  
         </select>
-        <input type="button" class="btn btn-success" value="Ordenar">
-        <br><br>
       </div>
-      
+      <br><br><br>
       <table class="table">
         <thead>
           <tr>
@@ -94,6 +93,7 @@
     </div>
 
 </section>
+</main>
 <footer>
 
 </footer>
