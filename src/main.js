@@ -29,7 +29,9 @@ const saveCohorts = (event) => {
   content.classList.add('loaded');
 
   //para listar los cohorts filtrados por "lim"
+  
   cohorts.forEach((cohort) => {
+    
     nameCohorts = cohort.id;
     if (nameCohorts.indexOf('lim') === 0){
       cohortSelect.innerHTML += `<option value="${nameCohorts}">${nameCohorts}</option>`

@@ -1,5 +1,8 @@
 describe('data', () => {
-
+  let usersTest
+  let users
+  let progress
+  
   it('debería exponer función computeUsersStats en objeto global', () => {
     assert.isFunction(computeUsersStats);
   });
@@ -20,7 +23,8 @@ describe('data', () => {
 
     const cohort = fixtures.cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
     const courses = Object.keys(cohort.coursesIndex);
-    const {users, progress} = fixtures;
+    progress = fixtures.progress;
+    const {users} = fixtures;
 
     it('debería retornar arreglo de usuarios con propiedad stats', () => {
       const processed = computeUsersStats(users, progress, courses);
@@ -77,8 +81,8 @@ describe('data', () => {
 
   describe('sortUsers(users, orderBy, orderDirection)', () => {
     let user1 = {
+      name : "Lorena Reyes",
       stats: {
-        name : "Lorena Reyes",
         percent: 100,
         exercises : {
           total: 2,
@@ -101,8 +105,8 @@ describe('data', () => {
     }
 
     let user2 = {
+      name : "Danelly Sotomayor",
       stats: {
-        name : "Danelly Sotomayor",
         percent: 53,
         exercises : {
           total: 2,
@@ -125,8 +129,8 @@ describe('data', () => {
     }
 
     let user3 = {
+      name : "Heydy Carrasco",
       stats: {
-        name : "Heydy Carrasco",
         percent: 58,
         exercises : {
           total: 5,
@@ -148,7 +152,7 @@ describe('data', () => {
       }
     }
 
-    let usersTest = [user1, user2, user3]
+    usersTest = [user1, user2, user3]
 
     it('debería retornar arreglo de usuarios ordenado por nombre ASC', () => {
       assert.deepEqual(window.sortUsers(usersTest, "name", "asc"), [user2, user3, user1])
@@ -192,15 +196,15 @@ describe('data', () => {
   describe('filterUsers(users, filterBy)', () => {
     it('debería retornar nuevo arreglo solo con usuarios con nombres que contengan string (case insensitive)', () => {
       let filterList = [{"id":"15TkBigdPLMetXb9W9rFnBvUEN92","name":"luz edith","locale": "es-PE","signupCohort":"lim-2018-03-pre-core-pw","timezone":"America/Lima","role":"student"},{"id":"19GgN0LHXUgjZ6Hbd713hAWGoh83","timezone":"America/Lima","name":"BRENDA DURAND","locale":"es-PE","signupCohort":"lim-2018-03-pre-core-pw","role":"student"},{"id":"1AUu4Up4pJZ6SDQCyayVu16mMMp1","signupCohort":"lim-2018-03-pre-core-pw","timezone":"America/Lima","name":"katherine alva","locale":"es-PE","role":"student"}]
-      assert.deepEqual(window.filterUsers(users,"BRENDA DURAND"), filterList);
-      assert.deepEqual(window.filterUsers(users,"katherine alva"), filterList);
+      assert.deepEqual(window.filterUsers(users,"luz edith"), filterList);
     });
   });
+
 
   let options = {
     cohort: "lim-2018-03-pre-core-pw",
     cohortData : {
-      users,
+      users: usersTest,
       progress,
       coursesIndex : ["intro"]
     },
