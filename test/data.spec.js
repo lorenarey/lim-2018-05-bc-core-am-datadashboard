@@ -196,7 +196,7 @@ describe('data', () => {
   describe('filterUsers(users, filterBy)', () => {
     it('debería retornar nuevo arreglo solo con usuarios con nombres que contengan string (case insensitive)', () => {
       let filterList = [{"id":"15TkBigdPLMetXb9W9rFnBvUEN92","name":"luz edith","locale": "es-PE","signupCohort":"lim-2018-03-pre-core-pw","timezone":"America/Lima","role":"student"},{"id":"19GgN0LHXUgjZ6Hbd713hAWGoh83","timezone":"America/Lima","name":"BRENDA DURAND","locale":"es-PE","signupCohort":"lim-2018-03-pre-core-pw","role":"student"},{"id":"1AUu4Up4pJZ6SDQCyayVu16mMMp1","signupCohort":"lim-2018-03-pre-core-pw","timezone":"America/Lima","name":"katherine alva","locale":"es-PE","role":"student"}]
-      assert.deepEqual(window.filterUsers(users,"luz edith"), filterList);
+      assert.deepEqual(window.filterUsers(usersTest,"luz edith"), filterList);
     });
   });
 
