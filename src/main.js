@@ -1,10 +1,8 @@
 const responseContainerEl = document.getElementById('container-user');
 const cohortSelect = document.getElementById('cohortSelect');
-let content = document.getElementById('content'); //nuevo selectores
 let contentTable = document.getElementById('show-stats-and-order');
 const orderSelect = document.getElementById('orderSelect');
 const searchInput = document.getElementById('search-input');
-const selectA=document.getElementById("select");
 const usersUrl = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
 const progressUrl = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
 const cohortsUrl = '../data/cohorts.json';
@@ -14,16 +12,18 @@ let progress;
 let cohorts;
 let courses;
 
+//llamando a la data users y enlazandolo con progress
 const saveUsers = (event) => {
   users = JSON.parse(event.target.responseText);
   getData(progressUrl, saveProgress, 'progress');
 }
 
+//llamando a la data progress y enlazandolo con cohorts
 const saveProgress = (event) => {
   progress = JSON.parse(event.target.responseText);
   getData(cohortsUrl, saveCohorts, 'cohorts');
 }
-
+//llamando a cohorts, imprimiendo en selector y llamando a la tabla de stats
 const saveCohorts = (event) => {
   cohorts = JSON.parse(event.target.responseText);
   content.classList.add('loaded');
@@ -34,47 +34,18 @@ const saveCohorts = (event) => {
     
     nameCohorts = cohort.id;
     if (nameCohorts.indexOf('lim') === 0){
-    selectA.innerHTML += `<option value="${nameCohorts}">${nameCohorts}</option>`
-    processCohortData()
+      cohortSelect.innerHTML += `<option value="${nameCohorts}">${nameCohorts}</option>`
     }
-})
-}
-
-const handleError = () => {
-  console.log('hay un error')
-}
-
-const getData = (url, callback, stringData) => {
-
-  let requestData = new XMLHttpRequest();
-  requestData.open('GET', url);
-  requestData.onload = callback;
-  requestData.onerror = handleError;
-  requestData.send();
-};
-
-const showData = (newUser) => {
-  responseContainerEl.innerHTML = "";
-  newUser.forEach((user) => {
-    let totalPercent = (user.stats.percent === undefined || NaN) ?  0 : user.stats.percent;
-    let exercisesPercent = isNaN(user.stats.exercises.percent) ?  0 : user.stats.exercises.percent;
-    let readsPercent = isNaN(user.stats.reads.percent) ? 0 : user.stats.reads.percent;
-    let quizzesPercent = isNaN(user.stats.quizzes.percent) ? 0 : user.stats.quizzes.percent;
-    const row = document.createElement('tr')
-    row.innerHTML = `<td>${user.name}</td><td>${totalPercent}%</td><td>${exercisesPercent}%</td><td>${readsPercent}%</td><td>${quizzesPercent}%</td><td>${user.stats.quizzes.scoreAvg}</td>`;
-    responseContainerEl.appendChild(row)
   })
-}
 
-//para enlazar con el selector anterior
- cohortSelect.addEventListener('change', (e) => {
-  contentTable.classList.add('loaded');
-  
-  const value = cohortSelect.options[cohortSelect.selectedIndex].value;
-  currentCohort = cohorts.find((cohort) => {
-    return cohort.id === value;
-  }); 
-  
+  //sirve para mostrar la tabla con los stats
+  cohortSelect.addEventListener('change', (e) => {
+    contentTable.classList.add('loaded');
+    const value = cohortSelect.options[cohortSelect.selectedIndex].value; 
+    currentCohort = cohorts.find((cohort) => {
+      return cohort.id === value;
+    });
+    
   const options = {
     cohort : currentCohort,
     cohortData : {users, progress},
@@ -85,16 +56,11 @@ const showData = (newUser) => {
   const newUser = processCohortData(options)
   showData(newUser);
 });
-  
 
-//para enlazar con el selector de cohorts NUEVO
-/* content.addEventListener('change', (e) => {
-  contentTable.classList.add('loaded');
-  const value = content.options[content.selectedIndex].value; //si esta línea está comentada, sí lista pero no ordena
-  currentCohort = cohorts.find((cohort) => {
-    return cohort.id === 'lim-2018-03-pre-core-pw';
-  });
-  
+//buscador de alumnas
+searchInput.addEventListener('input', () => {
+  let search = searchInput.value;
+
   const options = {
     cohort : currentCohort,
     cohortData : {users, progress},
@@ -102,12 +68,12 @@ const showData = (newUser) => {
     orderDirection: '',
     search: '',
   }
-  const newUser = processCohortData(options)
-  showData(newUser);
-}); */
-//-------------------------------------------------------
 
-
+  options.search = search;
+  const searching = processCohortData(options);
+  responseContainerEl.innerHTML = '';
+  showData(searching);
+});
 
 //selector de ordenado ascedente y descendente
 orderSelect.addEventListener('change', (e) => {  
@@ -122,11 +88,38 @@ orderSelect.addEventListener('change', (e) => {
   }
   const newUser = processCohortData(options)
   showData(newUser);
-})
+});
 
-getData(usersUrl, saveUsers, 'users');
+}
+
+const handleError = () => {
+  console.log('hay un error')
+}
+
+//función general de llamado de data
+const getData = (url, callback, stringData) => {
+
+  let requestData = new XMLHttpRequest();
+  requestData.open('GET', url);
+  requestData.onload = callback;
+  requestData.onerror = handleError;
+  requestData.send();
+};
+
+//función que muestra los datos de stats en la tabla, se interpola cada elemento
+const showData = (newUser) => {
+  responseContainerEl.innerHTML = "";
+  newUser.forEach((user) => {
+    let totalPercent = (user.stats.percent === undefined || NaN) ?  0 : user.stats.percent;
+    let exercisesPercent = isNaN(user.stats.exercises.percent) ?  0 : user.stats.exercises.percent;
+    let readsPercent = isNaN(user.stats.reads.percent) ? 0 : user.stats.reads.percent;
+    let quizzesPercent = isNaN(user.stats.quizzes.percent) ? 0 : user.stats.quizzes.percent;
+    const row = document.createElement('tr')
+    row.innerHTML = `<td>${user.name}</td><td>${totalPercent}%</td><td>${exercisesPercent}%</td><td>${readsPercent}%</td><td>${quizzesPercent}%</td><td>${user.stats.quizzes.scoreAvg}</td>`;
+    responseContainerEl.appendChild(row)
+  })
+}
 
 
 
-
-
+getData(usersUrl, saveUsers, 'users')
