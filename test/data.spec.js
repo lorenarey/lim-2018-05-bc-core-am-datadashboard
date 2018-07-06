@@ -179,10 +179,10 @@ describe('data', () => {
       assert.deepEqual(window.sortUsers(usersTest, "quizzes", "desc"), [user3, user2, user1])
     });
     it('debería retornar arreglo de usuarios ordenado por score promedio en quizzes completados ASC', () => {
-    assert.deepEqual(window.sortUsers(usersTest, "scoreAvg", "asc"), [user1, user3, user2])
+      assert.deepEqual(window.sortUsers(usersTest, "quizzesAvg", "asc"), [user1, user3, user2])
     });
     it('debería retornar arreglo de usuarios ordenado por score promedio en quizzes completados DESC', () => {
-      assert.deepEqual(window.sortUsers(usersTest, "scoreAvg", "desc"), [user2, user3, user1])
+      assert.deepEqual(window.sortUsers(usersTest, "quizzesAvg", "desc"), [user2, user3, user1])
     });
     it('debería retornar arreglo de usuarios ordenado por lecturas (reads) completadas ASC', () => {
       assert.deepEqual(window.sortUsers(usersTest, "reads", "asc"), [user3, user1, user2])
@@ -194,51 +194,96 @@ describe('data', () => {
   });
 
   describe('filterUsers(users, filterBy)', () => {
+    const cohort = fixtures.cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
+    const courses = Object.keys(cohort.coursesIndex);
+    const { users, progress } = fixtures;
+    const processed = computeUsersStats(users, progress, courses);
+
     it('debería retornar nuevo arreglo solo con usuarios con nombres que contengan string (case insensitive)', () => {
-      let filterList = [{"id":"15TkBigdPLMetXb9W9rFnBvUEN92","name":"luz edith","locale": "es-PE","signupCohort":"lim-2018-03-pre-core-pw","timezone":"America/Lima","role":"student"},{"id":"19GgN0LHXUgjZ6Hbd713hAWGoh83","timezone":"America/Lima","name":"BRENDA DURAND","locale":"es-PE","signupCohort":"lim-2018-03-pre-core-pw","role":"student"},{"id":"1AUu4Up4pJZ6SDQCyayVu16mMMp1","signupCohort":"lim-2018-03-pre-core-pw","timezone":"America/Lima","name":"katherine alva","locale":"es-PE","role":"student"}]
-      assert.deepEqual(window.filterUsers(usersTest,"luz edith"), filterList);
+      assert.deepEqual(filterUsers(processed, 'TERESA')[0].name, 'Teresa Isabel castro castillo');
     });
   });
 
-
-  let options = {
-    cohort: "lim-2018-03-pre-core-pw",
-    cohortData : {
-      users: usersTest,
-      progress,
-      coursesIndex : ["intro"]
-    },
-    orderBy:"name",
-    orderDirection:"asc",
-    search : "lorena"
-  }
+  // let options = {
+  //   cohort: "lim-2018-03-pre-core-pw",
+  //   cohortData : {
+  //     users: usersTest,
+  //     progress,
+  //     coursesIndex : ["intro"]
+  //   },
+  //   orderBy:"name",
+  //   orderDirection:"asc",
+  //   search : "lorena"
+  // }
 
   describe('processCohortData({ cohortData, orderBy, orderDirection, filterBy })', () => {
+    const cohort = fixtures.cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
+    const courses = Object.keys(cohort.coursesIndex);
+    const { users, progress } = fixtures;
+
+    let options = {
+      cohort: "lim-2018-03-pre-core-pw",
+      cohortData : {
+        users,//array en bruto users
+        progress,//objeto en bruto progress
+        coursesIndex : ["intro"]
+      },
+      orderBy:"name",
+      orderDirection:"asc",
+      search : "LESLIEANDREA"
+    }
 
     it('debería retornar arreglo de usuarios con propiedad stats y aplicar sort y filter', () => {
         assert.deepEqual(window.processCohortData(options),[{
+          id:"YolxWuYdppdWodRrE99p2GGvXLR2",
+          locale:"es-ES",
+          name:"Leslieandrea",
+          role:"student",
+          signupCohort:"lim-2018-03-pre-core-pw",
           stats: {
-            name : "lorena",
-            percent: 100,
             exercises : {
               total: 2,
               completed: 2,
               percent: 100
             },
-            reads : {
-              total: 11,
-              completed: 11,
-              percent: 100
-            },
+            percent: 100,
             quizzes : {
               total: 3,
               completed: 3,
               percent: 100,
-              scoreSum: 263,
-              scoreAvg: 88
-            }
-          }
-      }]);
+              scoreSum: 262,
+              scoreAvg: 87
+            },
+            reads: {
+              total: 11,
+              completed: 11,
+              percent: 100
+            }, 
+          },
+          timezone:"America/Lima"
+        }
+          // stats: {
+          //   name : "lorena",
+          //   percent: 100,
+          //   exercises : {
+          //     total: 2,
+          //     completed: 2,
+          //     percent: 100
+          //   },
+          //   reads : {
+          //     total: 11,
+          //     completed: 11,
+          //     percent: 100
+          //   },
+          //   quizzes : {
+          //     total: 3,
+          //     completed: 3,
+          //     percent: 100,
+          //     scoreSum: 264,
+          //     scoreAvg: 88
+          //   }
+          // }
+      ]);
   });
   
 });

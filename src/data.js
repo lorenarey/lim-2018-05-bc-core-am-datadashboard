@@ -154,16 +154,16 @@ window.sortUsers = (users, orderBy, orderDirection) => {
       });
     }
   }
-  if (orderDirection ==='asc'){
+  if (orderDirection === 'asc'){
     if (orderBy === 'quizzesAvg') {
-      sortedUsers = users.sort((a ,b) => {
+      sortedUsers = users.sort((a, b) => {
         return a.stats.quizzes.scoreAvg - b.stats.quizzes.scoreAvg;
       });
     }
   }
-  if (orderDirection ==='desc'){
+  if (orderDirection === 'desc'){
     if (orderBy === 'quizzesAvg') {
-      sortedUsers = users.sort((a ,b) => {
+      sortedUsers = users.sort((a, b) => {
         return b.stats.quizzes.scoreAvg - a.stats.quizzes.scoreAvg;
       });
     }
